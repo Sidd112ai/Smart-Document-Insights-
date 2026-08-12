@@ -4,14 +4,12 @@ import './DocumentUpload.css';
 function DocumentUpload({ onAnalyze, loading }) {
   const [documentText, setDocumentText] = useState('');
   const [documentType, setDocumentType] = useState('legal');
-  const [fileContent, setFileContent] = useState('');
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        setFileContent(event.target.result);
         setDocumentText(event.target.result);
       };
       reader.readAsText(file);
